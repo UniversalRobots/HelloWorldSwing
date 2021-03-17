@@ -21,9 +21,11 @@
 		<urcap.symbolicname>com.ur.urcap.examples.helloworldswing</urcap.symbolicname>
 		<urcap.vendor>Universal Robots</urcap.vendor>
 		<urcap.contactAddress>Energivej 25, 5260 Odense S, Denmark</urcap.contactAddress>
-		<urcap.copyright>Copyright (C) 2009-2017 Universal Robots. All Rights Reserved</urcap.copyright>
+		<urcap.copyright>Copyright (C) 2009-${copyright.year} Universal Robots. All Rights Reserved</urcap.copyright>
 		<urcap.description>Hello World Swing sample URCap</urcap.description>
 		<urcap.licenseType>Sample license</urcap.licenseType>
+		<urcap.compatibility.CB3>true</urcap.compatibility.CB3>
+		<urcap.compatibility.eSeries>true</urcap.compatibility.eSeries>
 		<!--********************** END OF URCAP META DATA **********************-->
 		<!--********************************************************************-->
 
@@ -39,6 +41,10 @@
 		<ursimvm.install.host></ursimvm.install.host>
 		<ursimvm.install.username>ur</ursimvm.install.username>
 		<ursimvm.install.password>easybot</ursimvm.install.password>
+
+		<!--Current year for the copyright-->
+		<copyright.year>${maven.build.timestamp}</copyright.year>
+		<maven.build.timestamp.format>yyyy</maven.build.timestamp.format>
 	</properties>
 
 	<build>
@@ -52,7 +58,21 @@
 					<target>1.6</target>
 				</configuration>
 			</plugin>
-			<plugin> 
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-install-plugin</artifactId>
+				<version>2.5.2</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.22.1</version>
+				<configuration>
+					<runOrder>alphabetical</runOrder>
+					<useSystemClassLoader>false</useSystemClassLoader>
+				</configuration>
+			</plugin>
+			<plugin>
 				<artifactId>maven-jar-plugin</artifactId>
 				<version>3.0.2</version>
 				<configuration>
@@ -89,9 +109,11 @@
 						<Bundle-Copyright>${urcap.copyright}</Bundle-Copyright>
 						<Bundle-LicenseType>${urcap.licenseType}</Bundle-LicenseType>
 						<Bundle-Description>${urcap.description}</Bundle-Description>
+						<URCapCompatibility-CB3>${urcap.compatibility.CB3}</URCapCompatibility-CB3>
+						<URCapCompatibility-eSeries>${urcap.compatibility.eSeries}</URCapCompatibility-eSeries>
 						<!--***************************************************************-->
 						<Import-Package>
-							com.ur.urcap.api*;version="[1.2.92,2.0.0)",
+							com.ur.urcap.api*,
 							*
 						</Import-Package>
 					</instructions>

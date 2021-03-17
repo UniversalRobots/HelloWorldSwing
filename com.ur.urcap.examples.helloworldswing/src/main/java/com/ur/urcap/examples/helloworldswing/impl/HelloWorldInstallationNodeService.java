@@ -18,7 +18,7 @@ public class HelloWorldInstallationNodeService implements SwingInstallationNodeS
 
 	@Override
 	public String getTitle(Locale locale) {
-		return "Hello World Swing";
+		return "Hello World";
 	}
 
 	@Override

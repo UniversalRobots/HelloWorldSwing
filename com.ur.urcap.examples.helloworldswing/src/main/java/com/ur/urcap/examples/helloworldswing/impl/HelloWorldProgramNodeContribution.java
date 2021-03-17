@@ -42,7 +42,7 @@ public class HelloWorldProgramNodeContribution implements ProgramNodeContributio
 
 	@Override
 	public String getTitle() {
-		return "Hello World Swing: " + (model.isSet(NAME) ? getName() : "");
+		return "Hello World: " + (model.isSet(NAME) ? getName() : "");
 	}
 
 	@Override

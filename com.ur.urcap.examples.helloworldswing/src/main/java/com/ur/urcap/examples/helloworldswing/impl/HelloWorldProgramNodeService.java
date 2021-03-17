@@ -24,11 +24,11 @@ public class HelloWorldProgramNodeService implements SwingProgramNodeService<Hel
 
 	@Override
 	public String getTitle(Locale locale) {
-		String title = "Hello World Swing";
+		String title = "Hello World";
 		if ("ru".equals(locale.getLanguage())) {
-			title = "Привет мир Swing";
+			title = "Привет мир";
 		} else if ("de".equals(locale.getLanguage())) {
-			title = "Hallo Welt Swing";
+			title = "Hallo Welt";
 		}
 		return title;
 	}
